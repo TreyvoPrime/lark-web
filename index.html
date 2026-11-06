@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20272c">
+  <meta name="description" content="Edit Java in your browser with Lark.">
+  <title>Lark Web</title>
+  <link rel="icon" href="lark.png">
+  <link rel="stylesheet" href="vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/codemirror/codemirror.min.js"></script>
+  <script defer src="vendor/codemirror/clike.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="toolbar">
+    <a class="brand" href="https://lark.rocks/" aria-label="Lark home"><img src="lark.png" alt=""><strong>Lark</strong><span>Web</span></a>
+    <div class="actions" aria-label="File actions">
+      <button id="toggle-files" type="button" aria-controls="sidebar" aria-expanded="true">Files</button>
+      <button id="new-file" type="button">New file</button>
+      <button id="import-file" type="button">Open file</button>
+      <input id="file-input" type="file" accept=".java,.txt,.md" multiple hidden>
+    </div>
+    <div class="spacer"></div>
+    <button id="theme" type="button" aria-label="Switch color theme">Light theme</button>
+    <button id="download" type="button" class="primary">Download file</button>
+  </header>
+  <div class="preview-notice" role="note"><strong>Browser preview</strong><span>Files stay in this browser. Java running and account sync aren’t available yet.</span><a href="https://lark.rocks/">Get Lark Desktop</a></div>
+  <main class="workspace">
+    <aside id="sidebar" aria-label="Files">
+      <div class="pane-heading"><span>EXPLORER</span><button id="add-file" type="button" title="New file" aria-label="New file">+</button></div>
+      <div id="files" role="list" aria-label="Project files"></div>
+      <p class="sidebar-note">Your files are saved in this browser on this device.</p>
+    </aside>
+    <section class="editor-pane" aria-label="Code editor">
+      <div class="file-bar"><span id="active-file"></span><button id="delete-file" type="button">Delete file</button></div>
+      <textarea id="editor" aria-label="Code editor" spellcheck="false"></textarea>
+      <div class="editor-footer"><span id="save-status" role="status" aria-live="polite">Ready</span><span id="cursor-status">Ln 1, Col 1</span><span>Java</span></div>
+    </section>
+  </main>
+  <dialog id="new-dialog"><form id="new-form"><h1>New file</h1><label for="filename">File name</label><input id="filename" maxlength="100" placeholder="Example.java" required><p id="file-error" role="alert"></p><div class="dialog-actions"><button type="button" id="cancel-new">Cancel</button><button class="primary" type="submit">Create</button></div></form></dialog>
+</body>
+</html>
